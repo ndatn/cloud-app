@@ -1,4 +1,3 @@
-// DeleteProduct.js
 import React from 'react';
 import ProductService from '../services/ProductService';
 
@@ -9,7 +8,6 @@ const DeleteProduct = ({ productId, onDelete }) => {
       onDelete(productId);
     } catch (error) {
       console.error('Error deleting product:', error);
-      // Handle error if needed
     }
   };
 

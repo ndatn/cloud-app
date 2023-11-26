@@ -1,8 +1,6 @@
-// ProductService.js
 import axios from 'axios';
 
-// Vercel automatically provides the base URL for your deployed application
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:3002/api';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:3001/api';
 console.log(process.env.NEXT_PUBLIC_API_URL);
 
 const ProductService = {

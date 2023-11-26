@@ -1,4 +1,3 @@
-// AddProduct.js
 import React, { useState } from 'react';
 import ProductService from '../services/ProductService';
 
@@ -14,14 +13,12 @@ const AddProduct = ({ onAdd }) => {
 
     try {
       await ProductService.addProduct(newProduct);
-      onAdd(newProduct); // Assuming the ProductService returns the added product
+      onAdd(newProduct);
       setProductName('');
 
-      // Reload the page after adding the product
       window.location.reload();
     } catch (error) {
       console.error('Error adding product:', error);
-      // Handle error if needed
     }
   };
 

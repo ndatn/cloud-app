@@ -4,13 +4,12 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-app.use(cors()); // Chỉ cần sử dụng một lần
+app.use(cors());
 
 const dotenv = require('dotenv');
 dotenv.config();
-const PORT = process.env.PORT || 3002;
-
-mongoose.connect(process.env.MONGODB_URI, {
+const PORT = process.env.PORT || 3001;
+mongoose.connect(process.env.MONGODB_URL, {
   dbName: 'Productdb',
 });
 
