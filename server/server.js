@@ -10,12 +10,9 @@ const dotenv = require('dotenv');
 dotenv.config();
 const PORT = process.env.PORT || 3002;
 
-mongoose.connect(
-  'mongodb+srv://ndat:ndat@cluster0.jhwfh7f.mongodb.net/Productdb',
-  {
-    dbName: 'Productdb',
-  }
-);
+mongoose.connect(process.env.MONGODB_URI, {
+  dbName: 'Productdb',
+});
 
 const productSchema = new mongoose.Schema({
   name: String,
