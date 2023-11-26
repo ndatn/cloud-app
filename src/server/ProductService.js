@@ -1,7 +1,7 @@
 // ProductService.js
 import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001/api';
+const API_URL = process.env.REACT_APP_API_URL || 'http://0.0.0.0:3001/api';
 
 const ProductService = {
   getProducts: async () => {
