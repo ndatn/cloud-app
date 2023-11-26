@@ -1,6 +1,6 @@
 // AddProduct.js
 import React, { useState } from 'react';
-import ProductService from '../server/ProductService';
+import ProductService from '../services/ProductService';
 
 const AddProduct = ({ onAdd }) => {
   const [productName, setProductName] = useState('');

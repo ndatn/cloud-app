@@ -1,6 +1,6 @@
 // ProductList.js
 import React, { useState, useEffect } from 'react';
-import ProductService from '../server/ProductService';
+import ProductService from '../services/ProductService';
 import DeleteProduct from './DeleteProduct'; // Import the DeleteProduct component
 
 const ProductList = () => {

@@ -4,21 +4,16 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-const corsOptions = {
-  origin: '*',
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
-  optionsSuccessStatus: 204,
-};
+app.use(cors()); // Chỉ cần sử dụng một lần
 
-app.use(cors(corsOptions));
-
-const PORT = process.env.PORT || 3001;
+const dotenv = require('dotenv');
+dotenv.config();
+const PORT = process.env.PORT || 3002;
 
 mongoose.connect(
   'mongodb+srv://ndat:ndat@cluster0.jhwfh7f.mongodb.net/Productdb',
   {
-    dbName: 'Productdb', // Add the database name here
+    dbName: 'Productdb',
   }
 );
 
@@ -39,6 +34,7 @@ app.get('/api/products', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
 app.delete('/api/products/:id', async (req, res) => {
   try {
     const deletedProduct = await Product.findByIdAndDelete(req.params.id);
@@ -60,16 +56,6 @@ app.post('/api/products', async (req, res) => {
     res.json(newProduct);
   } catch (error) {
     console.error('Error adding product:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
-
-app.delete('/api/products/:id', async (req, res) => {
-  try {
-    const deletedProduct = await Product.findByIdAndRemove(req.params.id);
-    res.json(deletedProduct);
-  } catch (error) {
-    console.error('Error deleting product:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });

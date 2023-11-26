@@ -1,6 +1,6 @@
 // DeleteProduct.js
 import React from 'react';
-import ProductService from '../server/ProductService';
+import ProductService from '../services/ProductService';
 
 const DeleteProduct = ({ productId, onDelete }) => {
   const handleDelete = async () => {
