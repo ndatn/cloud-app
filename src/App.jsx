@@ -1,29 +1,21 @@
 // App.js
 import React, { useState } from 'react';
-import AddProduct from './app/AddProduct';
-import SearchProducts from './app/SearchProducts';
+import ProductList from './components/ProductList';
+import AddProduct from './components/AddProduct';
 
-function App() {
+const App = () => {
   const [products, setProducts] = useState([]);
 
-  const addProduct = productName => {
-    setProducts([...products, productName]);
-  };
-
-  const searchProducts = term => {
-    const result = products.filter(product =>
-      product.toLowerCase().includes(term.toLowerCase())
-    );
-    console.log('Search result:', result);
+  const handleAddProduct = addedProduct => {
+    setProducts(prevProducts => [...prevProducts, addedProduct]);
   };
 
   return (
     <div>
-      <h1>Cloud Application</h1>
-      <AddProduct onAddProduct={addProduct} />
-      <SearchProducts onSearchProducts={searchProducts} />
+      <AddProduct onAdd={handleAddProduct} />
+      <ProductList products={products} />
     </div>
   );
-}
+};
 
 export default App;
