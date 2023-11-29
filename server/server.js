@@ -8,13 +8,18 @@ app.use(cors());
 
 const dotenv = require('dotenv');
 dotenv.config();
-const PORT = process.env.PORT || 3001;
-mongoose.connect(process.env.MONGODB_URL, {
+const PORT = process.env.REACT_APP_PORT || 3002;
+mongoose.connect(process.env.REACT_APP_MONGODB_URL, {
   dbName: 'Productdb',
 });
 
 const productSchema = new mongoose.Schema({
   name: String,
+  quantity: Number,
+  price: Number,
+  description: String,
+  image: String,
+  category: String,
 });
 
 const Product = mongoose.model('Product', productSchema);
@@ -48,7 +53,15 @@ app.delete('/api/products/:id', async (req, res) => {
 
 app.post('/api/products', async (req, res) => {
   try {
-    const newProduct = await Product.create(req.body);
+    const newProduct = await Product.create({
+      name: req.body.name,
+      quantity: req.body.quantity,
+      price: req.body.price,
+      description: req.body.description,
+      image: req.body.image,
+      category: req.body.category,
+    });
+
     res.json(newProduct);
   } catch (error) {
     console.error('Error adding product:', error);

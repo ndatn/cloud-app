@@ -1,7 +1,6 @@
 // App.js
 import React, { useState } from 'react';
-import ProductList from './components/ProductList';
-import AddProduct from './components/AddProduct';
+import Navigate from './navigate/navigate';
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -12,8 +11,7 @@ const App = () => {
 
   return (
     <div>
-      <AddProduct onAdd={handleAddProduct} />
-      <ProductList products={products} />
+      <Navigate products={products} onAddProduct={handleAddProduct} />
     </div>
   );
 };

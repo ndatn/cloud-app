@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:3001/api';
-console.log(process.env.NEXT_PUBLIC_API_URL);
+console.log(process.env.REACT_APP_API_URL);
+
+const API_URL = process.env.REACT_APP_API_URL || 'http://192.168.1.7:3001/api';
 
 const ProductService = {
   getProducts: async () => {
