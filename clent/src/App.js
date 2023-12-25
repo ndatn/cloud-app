@@ -4,7 +4,6 @@ import Navigate from './navigate/navigate';
 
 const App = () => {
   const [products, setProducts] = useState([]);
-
   const handleAddProduct = addedProduct => {
     setProducts(prevProducts => [...prevProducts, addedProduct]);
   };

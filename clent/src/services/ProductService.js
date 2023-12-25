@@ -2,7 +2,7 @@ import axios from 'axios';
 
 console.log(process.env.REACT_APP_API_URL);
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://192.168.1.7:3001/api';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3002/api';
 
 const ProductService = {
   getProducts: async () => {
