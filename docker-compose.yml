@@ -1,0 +1,29 @@
+version: '3.1'
+
+services:
+  back-end:
+    container_name: back-end-production
+    build: 
+      context: ./server
+      dockerfile: dockerfile
+    ports:
+      - 3001:3001
+    environment:
+      - REACT_APP_API_URL=http://0.0.0.0:3001/api
+      - REACT_APP_MONGODB_URL=mongodb+srv://ndat:ndat@cluster0.jhwfh7f.mongodb.net/Productdb
+      - REACT_APP_PORT=3001
+  
+  front-end:
+    container_name: front-end-production
+    build: 
+      context: ./clent
+      dockerfile: dockerfile
+    ports:
+      - 3000:3000
+    environment:
+      - REACT_APP_API_URL=http://localhost:3001/api
+      - REACT_APP_MONGODB_URL=mongodb+srv://ndat:ndat@cluster0.jhwfh7f.mongodb.net/Productdb
+      - REACT_APP_PORT=3001
+    depends_on:
+      - back-end
+  
