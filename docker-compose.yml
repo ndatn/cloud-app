@@ -9,7 +9,7 @@ services:
     ports:
       - 3001:3001
     environment:
-      - REACT_APP_API_URL=http://54.255.249.218:3001/api
+      - REACT_APP_API_URL=http://3.1.200.49:3001/api
       - REACT_APP_MONGODB_URL=mongodb+srv://ndat:ndat@cluster0.jhwfh7f.mongodb.net/Productdb
       - REACT_APP_PORT=3001
   
@@ -19,7 +19,7 @@ services:
       context: ./clent
       dockerfile: dockerfile
       args:
-        - REACT_APP_API_URL=http://54.255.249.218:3001/api
+        - REACT_APP_API_URL=http://3.1.200.49:3001/api
         - REACT_APP_MONGODB_URL=mongodb+srv://ndat:ndat@cluster0.jhwfh7f.mongodb.net/Productdb
         - REACT_APP_PORT=3001
         - NODE_ENV=production
