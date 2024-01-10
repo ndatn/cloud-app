@@ -43,6 +43,7 @@ const AddProduct = ({ onAdd }) => {
       setDescription('');
       setImage('');
       setCategory('');
+      window.location.reload();
     } catch (error) {
       console.error('Error adding product:', error);
     }
