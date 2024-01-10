@@ -4,10 +4,12 @@ import DeleteProduct from './DeleteProduct';
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
       const data = await ProductService.getProducts();
+
       setProducts(data);
     };
 
@@ -19,9 +21,28 @@ const ProductList = () => {
       prevProducts.filter(product => product._id !== productId)
     );
   };
+  const handleRefresh = () => {
+    window.location.reload();
+  };
+  const handleSearch = () => {
+    const filteredProducts = products.filter(product =>
+      product.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setProducts(filteredProducts);
+  };
 
   return (
     <div>
+      <div style={{ marginBottom: '10px', textAlign: 'center' }}>
+        <label>Search:</label>
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={e => setSearchTerm(e.target.value)}
+        />
+        <button onClick={handleSearch}>Search</button>
+        <button onClick={handleRefresh}>Refresh</button>
+      </div>
       <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>
         Product List
       </h2>
