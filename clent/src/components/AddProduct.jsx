@@ -14,10 +14,11 @@ const AddProduct = ({ onAdd }) => {
 
     if (file) {
       const reader = new FileReader();
-      reader.onloadend = () => {
+      reader.onloadend = (event) => {
+        console.log(event.target.result)
         setImage(reader.result);
       };
-      reader.readAsBinaryString(file);
+      reader.readAsDataURL(file)
     }
   };
 
